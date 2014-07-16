@@ -12,50 +12,94 @@
     <key>patterns</key>
     <array>
         <dict>
-            <key>begin</key>
-            <string>`</string>
-            <key>end</key>
-            <string>`</string>
-            <key>name</key>
-            <string>string.interpolated.backtick.makefile</string>
-            <key>patterns</key>
-            <array>
+            <key>match</key>
+            <string>(##(sequence-region|gff-version))\s+([^\s]+)</string>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
                 <dict>
-                    <key>include</key>
-                    <string>source.shell</string>
+                    <key>name</key>
+                    <string>keyword.definition.meta.GFF3</string>
                 </dict>
-            </array>
+                <key>3</key>
+                <dict>
+                    <key>name</key>
+                    <string>entity.name.class.meta.GFF3</string>
+                </dict>
+            </dict>
+              <key>name</key>
+            <string>comment.line.number-sign.makefile</string>
         </dict>
         <dict>
-            <key>begin</key>
-            <string>#</string>
-            <key>beginCaptures</key>
+            <key>match</key>
+            <string>#.*</string>
+            <key>captures</key>
             <dict>
                 <key>0</key>
                 <dict>
                     <key>name</key>
-                    <string>punctuation.definition.comment.makefile</string>
+                    <string>comment.definition.meta.GFF3</string>
                 </dict>
             </dict>
-            <key>end</key>
-            <string>$\n?</string>
+              <key>name</key>
+            <string>comment.line.number-sign.makefile</string>
+        </dict>
+
+        <dict>
+            <key>match</key>
+            <string>(Dbxref|ID|Parent|Derives_from|Name|Alias|Gap|Target|Note|Is_circular|Ontology_term)=([^;]+);</string>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>support.constant.name.tag.attribute.key.GFF3</string>
+                </dict>
+                 <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>string.attribute.value.GFF3</string>
+                </dict>
+            </dict>
             <key>name</key>
             <string>comment.line.number-sign.makefile</string>
-            <key>patterns</key>
-            <array>
-                <dict>
-                    <key>match</key>
-                    <string>(?&lt;!\\)\\$\n</string>
-                    <key>name</key>
-                    <string>punctuation.separator.continuation.makefile</string>
-                </dict>
-            </array>
         </dict>
         <dict>
             <key>match</key>
-            <string>^(\s*)\b(\-??include|ifeq|ifneq|ifdef|ifndef|else|endif|vpath|export|unexport|define|endef|override)\b</string>
+            <string>([_a-zA-Z]+)=([^;]+);?</string>
+            <key>captures</key>
+            <dict>
+                <key>1</key>
+                <dict>
+                    <key>name</key>
+                    <string>keyword.attribute.key.GFF3</string>
+                </dict>
+                 <key>2</key>
+                <dict>
+                    <key>name</key>
+                    <string>string.attribute.value.GFF3</string>
+                </dict>
+            </dict>
             <key>name</key>
-            <string>keyword.control.makefile</string>
+            <string>comment.line.number-sign.makefile</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\t?[-+.?]</string>
+            <key>name</key>
+            <string>support.function.reserved.GFF3</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\s+[0-9]+\s[0-9]+\s?</string>
+            <key>name</key>
+            <string>constant.numeric.GFF3</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string></string>
+            <key>name</key>
+            <string>support.function.reserved.GFF3</string>
         </dict>
     </array>
     <key>scopeName</key>
