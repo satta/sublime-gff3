@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>fileTypes</key>
+    <array>
+        <string>gff3</string>
+        <string>gff</string>
+    </array>
+    <key>name</key>
+    <string>GFF3</string>
+    <key>patterns</key>
+    <array>
+        <dict>
+            <key>begin</key>
+            <string>`</string>
+            <key>end</key>
+            <string>`</string>
+            <key>name</key>
+            <string>string.interpolated.backtick.makefile</string>
+            <key>patterns</key>
+            <array>
+                <dict>
+                    <key>include</key>
+                    <string>source.shell</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>begin</key>
+            <string>#</string>
+            <key>beginCaptures</key>
+            <dict>
+                <key>0</key>
+                <dict>
+                    <key>name</key>
+                    <string>punctuation.definition.comment.makefile</string>
+                </dict>
+            </dict>
+            <key>end</key>
+            <string>$\n?</string>
+            <key>name</key>
+            <string>comment.line.number-sign.makefile</string>
+            <key>patterns</key>
+            <array>
+                <dict>
+                    <key>match</key>
+                    <string>(?&lt;!\\)\\$\n</string>
+                    <key>name</key>
+                    <string>punctuation.separator.continuation.makefile</string>
+                </dict>
+            </array>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>^(\s*)\b(\-??include|ifeq|ifneq|ifdef|ifndef|else|endif|vpath|export|unexport|define|endef|override)\b</string>
+            <key>name</key>
+            <string>keyword.control.makefile</string>
+        </dict>
+    </array>
+    <key>scopeName</key>
+    <string>text.GFF3</string>
+</dict>
+</plist>
